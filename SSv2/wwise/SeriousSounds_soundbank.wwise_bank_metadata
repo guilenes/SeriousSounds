@@ -1,7 +1,15 @@
 
 events = [
+	"cost400000"
 	"fortnitedown_event"
+	"fusroda_event"
 	"gokutp_event"
+	"leeroyjenkins_event"
 	"metalpipe_event"
 	"reverbfart_event"
+	"skeletonarmy_event"
+	"sneaky_event"
+	"strike_event"
+	"tnt_event"
+	"zhonya_event"
 ]

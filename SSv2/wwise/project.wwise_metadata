@@ -4,10 +4,18 @@ aux_buses = [
 banks = {
 	SeriousSounds_soundbank = {
 		events = [
+			"cost400000"
 			"fortnitedown_event"
+			"fusroda_event"
 			"gokutp_event"
+			"leeroyjenkins_event"
 			"metalpipe_event"
 			"reverbfart_event"
+			"skeletonarmy_event"
+			"sneaky_event"
+			"strike_event"
+			"tnt_event"
+			"zhonya_event"
 		]
 	}
 	Init = {
@@ -21,6 +29,13 @@ buses = [
 	"Motion Factory Bus"
 ]
 events = {
+	cost400000 = {
+		attenuation_max = 0
+		duration_max = 8.475284
+		duration_min = 8.475284
+		duration_type = "OneShot"
+		positioning = "2D"
+	}
 	fortnitedown_event = {
 		attenuation_max = 0
 		duration_max = 0.998458
@@ -28,10 +43,24 @@ events = {
 		duration_type = "OneShot"
 		positioning = "2D"
 	}
+	fusroda_event = {
+		attenuation_max = 0
+		duration_max = 2.576644
+		duration_min = 2.576644
+		duration_type = "OneShot"
+		positioning = "2D"
+	}
 	gokutp_event = {
 		attenuation_max = 0
 		duration_max = 1.588354
 		duration_min = 1.588354
+		duration_type = "OneShot"
+		positioning = "2D"
+	}
+	leeroyjenkins_event = {
+		attenuation_max = 0
+		duration_max = 4.667370
+		duration_min = 4.667370
 		duration_type = "OneShot"
 		positioning = "2D"
 	}
@@ -49,6 +78,41 @@ events = {
 		duration_type = "OneShot"
 		positioning = "2D"
 	}
+	skeletonarmy_event = {
+		attenuation_max = 0
+		duration_max = 2.016803
+		duration_min = 2.016803
+		duration_type = "OneShot"
+		positioning = "2D"
+	}
+	sneaky_event = {
+		attenuation_max = 0
+		duration_max = 6.013106
+		duration_min = 6.013106
+		duration_type = "OneShot"
+		positioning = "2D"
+	}
+	strike_event = {
+		attenuation_max = 0
+		duration_max = 4.185987
+		duration_min = 4.185987
+		duration_type = "OneShot"
+		positioning = "2D"
+	}
+	tnt_event = {
+		attenuation_max = 0
+		duration_max = 6.199728
+		duration_min = 6.199728
+		duration_type = "OneShot"
+		positioning = "2D"
+	}
+	zhonya_event = {
+		attenuation_max = 0
+		duration_max = 4.024785
+		duration_min = 4.024785
+		duration_type = "OneShot"
+		positioning = "2D"
+	}
 }
 parameters = [
 	"Acoustic_Banner"
@@ -57,18 +121,26 @@ parameters = [
 	"Carpet"
 	"Concrete"
 	"Cork_Tiles"
+	"cost400000_volume"
 	"Curtains"
 	"Drywall"
 	"Fabric"
 	"fortnitedown_volume"
+	"fusrodah_volume"
 	"gokutp_volume"
+	"leeroyjenkins_volume"
 	"metalpipe_volume"
 	"Mountain"
 	"reverbfart_volume"
+	"skeletonarmy_volume"
+	"sneaky_volume"
+	"strike_volume"
 	"Tile"
+	"tnt_volume"
 	"Wood"
 	"Wood_Bright"
 	"Wood_Deep"
+	"zhonya_volume"
 ]
 state_groups = {
 }

@@ -3,6 +3,27 @@ local mod = get_mod("SSv2")
 -- Load Wwise bank
 Wwise.load_bank("wwise/SeriousSounds_soundbank")
 
+-- Sound replacements: [game event] = { event = our Wwise event, volume = setting id and RTPC name }
+-- Keys starting with "PLACEHOLDER_" still need the real in-game event name.
+local sounds = {
+	-- Kruber
+	["PLACEHOLDER_mercenary_ability"] = { event = "fusroda_event", volume = "fusrodah_volume" },
+	["PLACEHOLDER_huntsman_ability"] = { event = "sneaky_event", volume = "sneaky_volume" },
+	["PLACEHOLDER_foot_knight_ability"] = { event = "strike_event", volume = "strike_volume" },
+	["Play_career_bretonnian_knight_ability_swing_hit"] = { event = "metalpipe_event", volume = "metalpipe_volume" },
+	-- Bardin
+	["PLACEHOLDER_ironbreaker_ability"] = { event = "zhonya_event", volume = "zhonya_volume" },
+	["PLACEHOLDER_slayer_ability"] = { event = "leeroyjenkins_event", volume = "leeroyjenkins_volume" },
+	["PLACEHOLDER_engineer_ability"] = { event = "cost400000", volume = "cost400000_volume" },
+	-- Sienna
+	["Play_sienna_adept_blink_ability"] = { event = "gokutp_event", volume = "gokutp_volume" },
+	["PLACEHOLDER_unchained_ability"] = { event = "tnt_event", volume = "tnt_volume" },
+	["PLACEHOLDER_necromancer_ability"] = { event = "skeletonarmy_event", volume = "skeletonarmy_volume" },
+	-- Not ultimates
+	["player_combat_weapon_grenade_explosion"] = { event = "reverbfart_event", volume = "reverbfart_volume" },
+	["chr_vce_death"] = { event = "fortnitedown_event", volume = "fortnitedown_volume" },
+}
+
 -- RTPC tracking
 mod.rtpc_dirty = true
 
@@ -16,33 +37,20 @@ end
 -- Function to set RTPC using the wwise_world from the hook
 local function update_rtpcs(wwise_world)
 	if not wwise_world then return end
-	
-	-- TEMPORARILY DISABLED: Test if sounds play without RTPC setting
-	-- Set master volume
 
 	local master_vol = mod:get("master_volume") or 100
-	debug("RTPC volume = " .. tostring(master_vol))
+	debug("RTPC master_volume = " .. tostring(master_vol))
 
 	-- Set individual volumes
-	local gokutp_vol = mod:get("gokutp_volume") or 100
-	debug("RTPC volume = " .. tostring(gokutp_vol))
-	WwiseWorld.set_global_parameter(wwise_world, "gokutp_volume", gokutp_vol*master_vol/100)
-	
-	local metalpipe_vol = mod:get("metalpipe_volume") or 100
-	debug("RTPC volume = " .. tostring(metalpipe_vol))
-	WwiseWorld.set_global_parameter(wwise_world, "metalpipe_volume", metalpipe_vol*master_vol/100)
-	
-	local reverbfart_vol = mod:get("reverbfart_volume") or 100
-	debug("RTPC volume = " .. tostring(reverbfart_vol))
-	WwiseWorld.set_global_parameter(wwise_world, "reverbfart_volume", reverbfart_vol*master_vol/100)
-	
-	local fortnitedown_vol = mod:get("fortnitedown_volume") or 100
-	debug("RTPC volume = " .. tostring(fortnitedown_vol))
-	WwiseWorld.set_global_parameter(wwise_world, "fortnitedown_volume", fortnitedown_vol*master_vol/100)
+	for _, sound in pairs(sounds) do
+		local vol = mod:get(sound.volume) or 100
+		debug("RTPC " .. sound.volume .. " = " .. tostring(vol))
+		WwiseWorld.set_global_parameter(wwise_world, sound.volume, vol*master_vol/100)
+	end
 end
 
 -- Update RTPCs when settings change
-mod.on_setting_changed = function() 
+mod.on_setting_changed = function()
 	-- We'll update RTPCs on the next event trigger
 	mod.rtpc_dirty = true
 end
@@ -60,37 +68,21 @@ mod:hook(WwiseWorld, "trigger_event", function (func, self, event_name, ...)
 	if not enable_sounds then
 		return func(self, event_name, ...)
 	end
-	
-	local event_changed = false
-	
-    if event_name == "Play_sienna_adept_blink_ability" then
-        event_name = "gokutp_event"
-        debug("-> Replaced with: " .. event_name)
-        event_changed = true
-    elseif event_name == "Play_career_bretonnian_knight_ability_swing_hit" then
-        event_name = "metalpipe_event"
-        debug("-> Replaced with: " .. event_name)
-        event_changed = true
-    elseif event_name == "player_combat_weapon_grenade_explosion" then
-        event_name = "reverbfart_event"
-        debug("-> Replaced with: " .. event_name)
-        event_changed = true
-    elseif event_name == "chr_vce_death" then
-        event_name = "fortnitedown_event"
-        debug("-> Replaced with: " .. event_name)
-        event_changed = true
-    end
-    
-    local result = func(self, event_name, ...)
-	
-	-- Debug: check if the event was actually triggered (only for replaced events)
-	if event_changed then
-		if result then
-			debug("Event triggered successfully")
-		else
-			debug("Event trigger returned nil/false")
-		end
+
+	local sound = sounds[event_name]
+	if not sound then
+		return func(self, event_name, ...)
 	end
-	
+
+	debug("-> Replaced with: " .. sound.event)
+	local result = func(self, sound.event, ...)
+
+	-- Debug: check if the event was actually triggered
+	if result then
+		debug("Event triggered successfully")
+	else
+		debug("Event trigger returned nil/false")
+	end
+
 	return result
 end)
