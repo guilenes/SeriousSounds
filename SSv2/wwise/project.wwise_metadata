@@ -4,9 +4,9 @@ aux_buses = [
 banks = {
 	SeriousSounds_soundbank = {
 		events = [
-			"cost400000"
+			"cost400000_event"
 			"fortnitedown_event"
-			"fusroda_event"
+			"fusrodah_event"
 			"gokutp_event"
 			"leeroyjenkins_event"
 			"metalpipe_event"
@@ -29,7 +29,7 @@ buses = [
 	"Motion Factory Bus"
 ]
 events = {
-	cost400000 = {
+	cost400000_event = {
 		attenuation_max = 0
 		duration_max = 8.475284
 		duration_min = 8.475284
@@ -43,7 +43,7 @@ events = {
 		duration_type = "OneShot"
 		positioning = "2D"
 	}
-	fusroda_event = {
+	fusrodah_event = {
 		attenuation_max = 0
 		duration_max = 2.576644
 		duration_min = 2.576644

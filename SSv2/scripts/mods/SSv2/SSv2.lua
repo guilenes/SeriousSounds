@@ -7,14 +7,14 @@ Wwise.load_bank("wwise/SeriousSounds_soundbank")
 -- Keys starting with "PLACEHOLDER_" still need the real in-game event name.
 local sounds = {
 	-- Kruber
-	["PLACEHOLDER_mercenary_ability"] = { event = "fusroda_event", volume = "fusrodah_volume" },
+	["PLACEHOLDER_mercenary_ability"] = { event = "fusrodah_event", volume = "fusrodah_volume" },
 	["PLACEHOLDER_huntsman_ability"] = { event = "sneaky_event", volume = "sneaky_volume" },
 	["PLACEHOLDER_foot_knight_ability"] = { event = "strike_event", volume = "strike_volume" },
 	["Play_career_bretonnian_knight_ability_swing_hit"] = { event = "metalpipe_event", volume = "metalpipe_volume" },
 	-- Bardin
 	["PLACEHOLDER_ironbreaker_ability"] = { event = "zhonya_event", volume = "zhonya_volume" },
 	["PLACEHOLDER_slayer_ability"] = { event = "leeroyjenkins_event", volume = "leeroyjenkins_volume" },
-	["PLACEHOLDER_engineer_ability"] = { event = "cost400000", volume = "cost400000_volume" },
+	["PLACEHOLDER_engineer_ability"] = { event = "cost400000_event", volume = "cost400000_volume" },
 	-- Sienna
 	["Play_sienna_adept_blink_ability"] = { event = "gokutp_event", volume = "gokutp_volume" },
 	["PLACEHOLDER_unchained_ability"] = { event = "tnt_event", volume = "tnt_volume" },

@@ -1,8 +1,8 @@
 
 events = [
-	"cost400000"
+	"cost400000_event"
 	"fortnitedown_event"
-	"fusroda_event"
+	"fusrodah_event"
 	"gokutp_event"
 	"leeroyjenkins_event"
 	"metalpipe_event"
