@@ -1,0 +1,15 @@
+mod =  [
+	"SSv2"
+]
+
+package = [
+	"resource_packages/SSv2/SSv2"
+]
+
+lua = [
+	"scripts/mods/SSv2/*"
+]
+
+wwise_dep = [
+    "wwise/*"
+]

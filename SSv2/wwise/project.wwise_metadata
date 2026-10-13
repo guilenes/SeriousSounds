@@ -1,0 +1,78 @@
+
+aux_buses = [
+]
+banks = {
+	SeriousSounds_soundbank = {
+		events = [
+			"fortnitedown_event"
+			"gokutp_event"
+			"metalpipe_event"
+			"reverbfart_event"
+		]
+	}
+	Init = {
+		events = [
+		]
+	}
+}
+buses = [
+	"Master Audio Bus"
+	"Mod_Sounds_Bus"
+	"Motion Factory Bus"
+]
+events = {
+	fortnitedown_event = {
+		attenuation_max = 0
+		duration_max = 0.998458
+		duration_min = 0.998458
+		duration_type = "OneShot"
+		positioning = "2D"
+	}
+	gokutp_event = {
+		attenuation_max = 0
+		duration_max = 1.588354
+		duration_min = 1.588354
+		duration_type = "OneShot"
+		positioning = "2D"
+	}
+	metalpipe_event = {
+		attenuation_max = 0
+		duration_max = 2.589187
+		duration_min = 2.589187
+		duration_type = "OneShot"
+		positioning = "2D"
+	}
+	reverbfart_event = {
+		attenuation_max = 0
+		duration_max = 3.842917
+		duration_min = 3.842917
+		duration_type = "OneShot"
+		positioning = "2D"
+	}
+}
+parameters = [
+	"Acoustic_Banner"
+	"Anechoic"
+	"Brick"
+	"Carpet"
+	"Concrete"
+	"Cork_Tiles"
+	"Curtains"
+	"Drywall"
+	"Fabric"
+	"fortnitedown_volume"
+	"gokutp_volume"
+	"metalpipe_volume"
+	"Mountain"
+	"reverbfart_volume"
+	"Tile"
+	"Wood"
+	"Wood_Bright"
+	"Wood_Deep"
+]
+state_groups = {
+}
+switch_groups = {
+}
+triggers = [
+]
